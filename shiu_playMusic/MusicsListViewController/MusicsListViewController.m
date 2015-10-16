@@ -66,8 +66,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"TableViewCell";
-    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    static NSString *identifier = @"MusicsListViewControllerCell";
+    MusicsListViewControllerCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     //cell.temp=self.infoArray[indexPath.row];
     return cell;
 }
@@ -77,7 +77,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // tableView: cellForRowAtIndexPath:方法中有兩個得重用cell的方法
-    [self.musicsInfoTableView registerClass:[TableViewCell class] forCellReuseIdentifier:@"TableViewCell"];
+    [self.musicsInfoTableView registerClass:[MusicsListViewControllerCell class] forCellReuseIdentifier:@"MusicsListViewControllerCell"];
     
     
     

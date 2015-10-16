@@ -1,5 +1,5 @@
 //
-//  TableViewCell.h
+//  MusicsListViewController.h
 //  shiu_playMusic
 //
 //  Created by allen_hsu on 2015/10/15.
@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface TableViewCell : UITableViewCell
+#import "MusicsListViewControllerCell.h"
+@interface MusicsListViewController : UIViewController
 
 @end

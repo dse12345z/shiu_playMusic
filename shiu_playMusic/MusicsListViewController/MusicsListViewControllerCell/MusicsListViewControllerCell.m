@@ -6,9 +6,9 @@
 //  Copyright © 2015年 allen_hsu. All rights reserved.
 //
 
-#import "TableViewCell.h"
+#import "MusicsListViewControllerCell.h"
 
-@implementation TableViewCell
+@implementation MusicsListViewControllerCell
 
 #pragma mark - life cycle 決定我的cell用哪一個畫面
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
