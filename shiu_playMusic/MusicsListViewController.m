@@ -22,6 +22,7 @@
 
 #pragma mark - TableView Delegate
 - (IBAction)button:(id)sender {
+    NSLog(@"123");
 //    //總時間
 //    NSUInteger dTotalSeconds = CMTimeGetSeconds(self.player.currentItem.asset.duration);
 //    NSLog(@"12214124 = %lu", (unsigned long)dTotalSeconds);
