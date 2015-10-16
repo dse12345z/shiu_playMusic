@@ -12,6 +12,8 @@
 		E4B761BF1BCF7F6200335077 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B761BD1BCF7F6200335077 /* TableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4B761C01BCF7F6200335077 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B761BE1BCF7F6200335077 /* TableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		E4B761C61BCF8B0400335077 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B761C51BCF8B0400335077 /* AVFoundation.framework */; };
+		E4B7B6F91BD0F02700C417DA /* DownloadMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B7B6F71BD0F02700C417DA /* DownloadMusicViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E4B7B6FA1BD0F02700C417DA /* DownloadMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B6F81BD0F02700C417DA /* DownloadMusicViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		E4D5B4971BCF4B7400F2C509 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5B4961BCF4B7400F2C509 /* main.m */; };
 		E4D5B49A1BCF4B7400F2C509 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5B4991BCF4B7400F2C509 /* AppDelegate.m */; };
 		E4D5B4A21BCF4B7400F2C509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4D5B4A11BCF4B7400F2C509 /* Assets.xcassets */; };
@@ -20,8 +22,6 @@
 		E4D5B4BB1BCF4B7400F2C509 /* shiu_playMusicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5B4BA1BCF4B7400F2C509 /* shiu_playMusicUITests.m */; };
 		E4D5B4D71BCF71DE00F2C509 /* MusicsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5B4D51BCF71DE00F2C509 /* MusicsListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E4D5B4D81BCF71DE00F2C509 /* MusicsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D5B4D61BCF71DE00F2C509 /* MusicsListViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		E4D5B4DC1BCF723F00F2C509 /* PlayMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5B4DA1BCF723F00F2C509 /* PlayMusicViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E4D5B4DD1BCF723F00F2C509 /* PlayMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D5B4DB1BCF723F00F2C509 /* PlayMusicViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +48,9 @@
 		E4B761BD1BCF7F6200335077 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewCell.m; path = ../TableViewCell.m; sourceTree = "<group>"; };
 		E4B761BE1BCF7F6200335077 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableViewCell.xib; path = ../TableViewCell.xib; sourceTree = "<group>"; };
 		E4B761C51BCF8B0400335077 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E4B7B6F61BD0F02700C417DA /* DownloadMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadMusicViewController.h; sourceTree = "<group>"; };
+		E4B7B6F71BD0F02700C417DA /* DownloadMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadMusicViewController.m; sourceTree = "<group>"; };
+		E4B7B6F81BD0F02700C417DA /* DownloadMusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadMusicViewController.xib; sourceTree = "<group>"; };
 		E4D5B4921BCF4B7400F2C509 /* shiu_playMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shiu_playMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D5B4961BCF4B7400F2C509 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4D5B4981BCF4B7400F2C509 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -64,9 +67,6 @@
 		E4D5B4D41BCF71DE00F2C509 /* MusicsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicsListViewController.h; sourceTree = "<group>"; };
 		E4D5B4D51BCF71DE00F2C509 /* MusicsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicsListViewController.m; sourceTree = "<group>"; };
 		E4D5B4D61BCF71DE00F2C509 /* MusicsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicsListViewController.xib; sourceTree = "<group>"; };
-		E4D5B4D91BCF723F00F2C509 /* PlayMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayMusicViewController.h; path = ../PlayMusicViewController.h; sourceTree = "<group>"; };
-		E4D5B4DA1BCF723F00F2C509 /* PlayMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayMusicViewController.m; path = ../PlayMusicViewController.m; sourceTree = "<group>"; };
-		E4D5B4DB1BCF723F00F2C509 /* PlayMusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayMusicViewController.xib; path = ../PlayMusicViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +103,37 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		E4B7B6F31BD0EEFD00C417DA /* MusicsListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E4D5B4D41BCF71DE00F2C509 /* MusicsListViewController.h */,
+				E4D5B4D51BCF71DE00F2C509 /* MusicsListViewController.m */,
+				E4D5B4D61BCF71DE00F2C509 /* MusicsListViewController.xib */,
+				E4B7B6F41BD0EF0F00C417DA /* TableViewCell */,
+			);
+			name = MusicsListViewController;
+			sourceTree = "<group>";
+		};
+		E4B7B6F41BD0EF0F00C417DA /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E4B761BC1BCF7F6200335077 /* TableViewCell.h */,
+				E4B761BD1BCF7F6200335077 /* TableViewCell.m */,
+				E4B761BE1BCF7F6200335077 /* TableViewCell.xib */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		E4B7B6F51BD0EF3400C417DA /* PlayMusicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E4B7B6F61BD0F02700C417DA /* DownloadMusicViewController.h */,
+				E4B7B6F71BD0F02700C417DA /* DownloadMusicViewController.m */,
+				E4B7B6F81BD0F02700C417DA /* DownloadMusicViewController.xib */,
+			);
+			name = PlayMusicViewController;
+			sourceTree = "<group>";
+		};
 		E4D5B4891BCF4B7400F2C509 = {
 			isa = PBXGroup;
 			children = (
@@ -129,15 +160,8 @@
 			children = (
 				E4D5B4981BCF4B7400F2C509 /* AppDelegate.h */,
 				E4D5B4991BCF4B7400F2C509 /* AppDelegate.m */,
-				E4D5B4D41BCF71DE00F2C509 /* MusicsListViewController.h */,
-				E4D5B4D51BCF71DE00F2C509 /* MusicsListViewController.m */,
-				E4D5B4D61BCF71DE00F2C509 /* MusicsListViewController.xib */,
-				E4B761BC1BCF7F6200335077 /* TableViewCell.h */,
-				E4B761BD1BCF7F6200335077 /* TableViewCell.m */,
-				E4B761BE1BCF7F6200335077 /* TableViewCell.xib */,
-				E4D5B4D91BCF723F00F2C509 /* PlayMusicViewController.h */,
-				E4D5B4DA1BCF723F00F2C509 /* PlayMusicViewController.m */,
-				E4D5B4DB1BCF723F00F2C509 /* PlayMusicViewController.xib */,
+				E4B7B6F51BD0EF3400C417DA /* PlayMusicViewController */,
+				E4B7B6F31BD0EEFD00C417DA /* MusicsListViewController */,
 				E4D5B4A11BCF4B7400F2C509 /* Assets.xcassets */,
 				E4D5B4A31BCF4B7400F2C509 /* LaunchScreen.storyboard */,
 				E4D5B4A61BCF4B7400F2C509 /* Info.plist */,
@@ -284,8 +308,8 @@
 				E4D5B4D81BCF71DE00F2C509 /* MusicsListViewController.xib in Resources */,
 				E4B761C01BCF7F6200335077 /* TableViewCell.xib in Resources */,
 				E4D5B4A51BCF4B7400F2C509 /* LaunchScreen.storyboard in Resources */,
+				E4B7B6FA1BD0F02700C417DA /* DownloadMusicViewController.xib in Resources */,
 				E4D5B4A21BCF4B7400F2C509 /* Assets.xcassets in Resources */,
-				E4D5B4DD1BCF723F00F2C509 /* PlayMusicViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,9 +336,9 @@
 			files = (
 				E4D5B49A1BCF4B7400F2C509 /* AppDelegate.m in Sources */,
 				E4D5B4D71BCF71DE00F2C509 /* MusicsListViewController.m in Sources */,
-				E4D5B4DC1BCF723F00F2C509 /* PlayMusicViewController.m in Sources */,
 				E4B761BF1BCF7F6200335077 /* TableViewCell.m in Sources */,
 				E4D5B4971BCF4B7400F2C509 /* main.m in Sources */,
+				E4B7B6F91BD0F02700C417DA /* DownloadMusicViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
