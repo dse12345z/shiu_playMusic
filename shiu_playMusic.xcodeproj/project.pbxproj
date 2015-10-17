@@ -16,6 +16,8 @@
 		E4B7B70A1BD107FB00C417DA /* MusicsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B7021BD107FB00C417DA /* MusicsListViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		E4B7B70B1BD107FB00C417DA /* MusicsListViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B7B7051BD107FB00C417DA /* MusicsListViewControllerCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4B7B70C1BD107FB00C417DA /* MusicsListViewControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B7061BD107FB00C417DA /* MusicsListViewControllerCell.xib */; settings = {ASSET_TAGS = (); }; };
+		E4B7B70F1BD2A12B00C417DA /* downloadIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B70D1BD2A12B00C417DA /* downloadIcon.png */; };
+		E4B7B7101BD2A12B00C417DA /* musicVideoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B70E1BD2A12B00C417DA /* musicVideoIcon.png */; };
 		E4D5B4971BCF4B7400F2C509 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5B4961BCF4B7400F2C509 /* main.m */; };
 		E4D5B49A1BCF4B7400F2C509 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5B4991BCF4B7400F2C509 /* AppDelegate.m */; };
 		E4D5B4A21BCF4B7400F2C509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4D5B4A11BCF4B7400F2C509 /* Assets.xcassets */; };
@@ -54,6 +56,8 @@
 		E4B7B7041BD107FB00C417DA /* MusicsListViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicsListViewControllerCell.h; sourceTree = "<group>"; };
 		E4B7B7051BD107FB00C417DA /* MusicsListViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicsListViewControllerCell.m; sourceTree = "<group>"; };
 		E4B7B7061BD107FB00C417DA /* MusicsListViewControllerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicsListViewControllerCell.xib; sourceTree = "<group>"; };
+		E4B7B70D1BD2A12B00C417DA /* downloadIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = downloadIcon.png; path = ../downloadIcon.png; sourceTree = "<group>"; };
+		E4B7B70E1BD2A12B00C417DA /* musicVideoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = musicVideoIcon.png; path = ../musicVideoIcon.png; sourceTree = "<group>"; };
 		E4D5B4921BCF4B7400F2C509 /* shiu_playMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shiu_playMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D5B4961BCF4B7400F2C509 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4D5B4981BCF4B7400F2C509 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 		E4D5B4951BCF4B7400F2C509 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E4B7B70D1BD2A12B00C417DA /* downloadIcon.png */,
+				E4B7B70E1BD2A12B00C417DA /* musicVideoIcon.png */,
 				E4D5B4A61BCF4B7400F2C509 /* Info.plist */,
 				E452635C1BD0062600728A8C /* like.m4v */,
 				E45263591BCFF4BC00728A8C /* Movie.m4v */,
@@ -303,6 +309,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4B7B70F1BD2A12B00C417DA /* downloadIcon.png in Resources */,
+				E4B7B7101BD2A12B00C417DA /* musicVideoIcon.png in Resources */,
 				E4B7B7081BD107FB00C417DA /* DownloadMusicViewController.xib in Resources */,
 				E452635A1BCFF4BC00728A8C /* Movie.m4v in Resources */,
 				E4B7B70A1BD107FB00C417DA /* MusicsListViewController.xib in Resources */,

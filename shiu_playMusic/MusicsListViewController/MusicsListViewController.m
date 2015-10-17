@@ -9,10 +9,9 @@
 #import "MusicsListViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
-@interface MusicsListViewController ()
-@property (weak, nonatomic) IBOutlet UIView *PlayingToolsView;
 
-@property (weak, nonatomic) IBOutlet UIView *dispalyMovieView;
+@interface MusicsListViewController ()
+@property (weak, nonatomic) IBOutlet UIView *playvideoView;
 @property (weak, nonatomic) IBOutlet UITableView *musicsInfoTableView;
 @property (strong) AVPlayer *player;
 @property (strong) AVPlayerLayer *avPlayerLayer;
@@ -21,40 +20,19 @@
 @end
 
 @implementation MusicsListViewController
+- (IBAction)turnScreenButtonAction:(id)sender {   
+   [self playVideo:@"Movie"];
 
-#pragma mark - TableView Delegate
-
-- (IBAction)turnScreenButtonAction:(id)sender {
-    self.avPlayerLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    //self.avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
 }
-
-
+#pragma mark - TableView Delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    PlayMusicViewController *playerViewController = [PlayMusicViewController new];
-//    [self presentViewController:playerViewController animated:YES completion:nil];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsPath = [NSString stringWithFormat:@"%@/%@", [paths objectAtIndex:0], paths];
-    
-    //獲得Resource的路徑
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"like" ofType:@"m4v"];
-    
-    NSURL *fileURL = [NSURL fileURLWithPath:path];
-    self.player = [[AVPlayer alloc] initWithPlayerItem:[[AVPlayerItem alloc] initWithURL:fileURL]];
-    self.avPlayerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
-    self.avPlayerLayer.frame = CGRectMake(0, 0, self.dispalyMovieView.frame.size.width, self.dispalyMovieView.frame.size.height);
-      self.avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    // self.view.backgroundColor = [UIColor clearColor];
-    [self.dispalyMovieView.layer addSublayer:_avPlayerLayer];
-    
-    [_player play];
 
-    
+    [self playVideo:@"like"];
 }
 - (void)replaceCurrentItemWithPlayerItem:(nullable AVPlayerItem *)item {
     NSLog(@"123");
@@ -78,9 +56,10 @@
     [super viewDidLoad];
     // tableView: cellForRowAtIndexPath:方法中有兩個得重用cell的方法
     [self.musicsInfoTableView registerClass:[MusicsListViewControllerCell class] forCellReuseIdentifier:@"MusicsListViewControllerCell"];
-    
-    
-    
+   // 完全透明的navigationBar
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    //取消navigationBar下邊的線
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     
     
     //    //總時間
@@ -98,27 +77,27 @@
     
     
     //@property 因為是屬性所以都用點給值   method 就是用中括號給值 ＋-   -實例方法 ＋類方法
-
+}
+-(void)playVideo:(NSString*)StrFileName{
+    self.player =nil;
+    //[self.dispalyMovieView removeFromSuperview];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [NSString stringWithFormat:@"%@/%@", [paths objectAtIndex:0], paths];
     
-//    NSArray *names=@[@"Tom",@"Mark",@"Amry",@"Harry",@"Jack"];
-//    NSArray *sexs=@[@0,@1,@0,@1,@0];
-//    NSArray *birthdays=@[@"1990-09-10",@"1940-01-18",@"1970-05-25",@"2000-07-06",@"1991-10-24"];
-
-
-//    self.infoArray= [NSMutableArray new];
-//    for (int i=0; i<names.count; i++) {
-//        NSMutableDictionary *infoDictionary = [NSMutableDictionary new];
-//
-//        [infoDictionary setObject:birthdays[i] forKey:@"birthday"] ;
-//        [infoDictionary setObject:names[i] forKey:@"name"] ;
-//        [infoDictionary setObject:([sexs [i] isEqual:@0])? @"boy" : @"girl" forKey:@"controlSex"] ;
-//        [self.infoArray addObject:infoDictionary];
-//        NSLog(@"%@",[infoDictionary objectForKey:@"name"] );
-//
-//    }
-
-
+    //獲得Resource的路徑
+    NSString *path = [[NSBundle mainBundle] pathForResource:StrFileName ofType:@"m4v"];
+    
+    NSURL *fileURL = [NSURL fileURLWithPath:path];
+   self.player = [[AVPlayer alloc] initWithPlayerItem:[[AVPlayerItem alloc] initWithURL:fileURL]];
+    
+   
+    
+    self.avPlayerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
+    self.avPlayerLayer.frame = CGRectMake(0, 0, self.playvideoView.frame.size.width, self.playvideoView.frame.size.height);
+    self.avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    [self.playvideoView.layer addSublayer:_avPlayerLayer];
+    [self.player play];
+    
 
 }
-
 @end
