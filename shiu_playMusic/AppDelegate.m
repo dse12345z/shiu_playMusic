@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MusicsListViewController.h"
+#import "VideoListViewController.h"
 #import "DownloadMusicViewController.h"
 @interface AppDelegate ()
 
@@ -20,7 +20,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     UINavigationController *musicsListNavigationController = [[UINavigationController alloc] init];
-    MusicsListViewController *musicsListView = [[MusicsListViewController alloc] init];
+    VideoListViewController *musicsListView = [[VideoListViewController alloc] init];
     [musicsListNavigationController pushViewController:musicsListView animated:NO];
     UITabBarItem *musicsListBarItem=[[UITabBarItem alloc]initWithTitle:@"Audio" image:[UIImage imageNamed:@"musicVideoIcon.png"] selectedImage:[UIImage imageNamed:@"musicVideoIcon.png.png"]];
     musicsListNavigationController.tabBarItem=musicsListBarItem;

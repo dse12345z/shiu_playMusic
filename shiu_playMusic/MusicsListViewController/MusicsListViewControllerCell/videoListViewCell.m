@@ -1,15 +1,15 @@
 //
-//  TableViewCell.m
+//  VideoListViewCell.m
 //  shiu_playMusic
 //
-//  Created by allen_hsu on 2015/10/15.
+//  Created by allen_hsu on 2015/10/19.
 //  Copyright © 2015年 allen_hsu. All rights reserved.
 //
 
-#import "MusicsListViewControllerCell.h"
+#import "VideoListViewCell.h"
 
-@implementation MusicsListViewControllerCell
-
+@implementation VideoListViewCell
+@synthesize videoImageView;
 #pragma mark - life cycle 決定我的cell用哪一個畫面
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -20,15 +20,4 @@
     
     return self;
 }
-
-//-(void)setTemp:(NSDictionary *)temp{
-//    _temp = temp;
-//    self.controlSexLabel.text=temp[@"controlSex"];
-//    self.birthdayLabel.text=temp[@"birthday"];
-//    self.nameLabel.text=temp[@"name"];
-//}
-//-(NSDictionary *)temp{
-//    return _temp;
-//}
-
 @end

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MusicsListViewControllerCell.h"
+#import "videoListViewCell.h"
 #import "PlayVideoView.h"
-@interface MusicsListViewController : UIViewController
+@interface VideoListViewController : UIViewController
 
 @end
