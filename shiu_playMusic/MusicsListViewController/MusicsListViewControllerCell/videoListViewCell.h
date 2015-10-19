@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface VideoListViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *videoImageView;
 
 @end
