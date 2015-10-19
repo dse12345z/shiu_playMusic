@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E406EEF91BD4F79600A26B27 /* 我能給的.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E406EEF81BD4F79600A26B27 /* 我能給的.m4v */; };
-		E452635A1BCFF4BC00728A8C /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E45263591BCFF4BC00728A8C /* Movie.m4v */; settings = {ASSET_TAGS = (); }; };
-		E452635D1BD0081600728A8C /* like.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E452635C1BD0062600728A8C /* like.m4v */; };
+		E406EF021BD524BA00A26B27 /* downloadIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E406EEFC1BD524BA00A26B27 /* downloadIcon.png */; settings = {ASSET_TAGS = (); }; };
+		E406EF031BD524BA00A26B27 /* musicVideoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E406EEFD1BD524BA00A26B27 /* musicVideoIcon.png */; settings = {ASSET_TAGS = (); }; };
+		E406EF041BD524BA00A26B27 /* like.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E406EEFF1BD524BA00A26B27 /* like.m4v */; settings = {ASSET_TAGS = (); }; };
+		E406EF051BD524BA00A26B27 /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E406EF001BD524BA00A26B27 /* Movie.m4v */; settings = {ASSET_TAGS = (); }; };
+		E406EF061BD524BA00A26B27 /* 我能給的.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E406EF011BD524BA00A26B27 /* 我能給的.m4v */; settings = {ASSET_TAGS = (); }; };
 		E4B761C61BCF8B0400335077 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B761C51BCF8B0400335077 /* AVFoundation.framework */; };
 		E4B7B7071BD107FB00C417DA /* DownloadMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B7B6FD1BD107FB00C417DA /* DownloadMusicViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E4B7B7081BD107FB00C417DA /* DownloadMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B6FE1BD107FB00C417DA /* DownloadMusicViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		E4B7B7091BD107FB00C417DA /* VideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B7B7011BD107FB00C417DA /* VideoListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E4B7B70A1BD107FB00C417DA /* VideoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B7021BD107FB00C417DA /* VideoListViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		E4B7B70F1BD2A12B00C417DA /* downloadIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B70D1BD2A12B00C417DA /* downloadIcon.png */; };
-		E4B7B7101BD2A12B00C417DA /* musicVideoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B70E1BD2A12B00C417DA /* musicVideoIcon.png */; };
 		E4B7B7181BD348F100C417DA /* PlayVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B7B7171BD348F100C417DA /* PlayVideoView.m */; settings = {ASSET_TAGS = (); }; };
 		E4B7B7E31BD48A6000C417DA /* VideoListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B7B7E11BD48A6000C417DA /* VideoListViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		E4B7B7E41BD48A6000C417DA /* VideoListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B7E21BD48A6000C417DA /* VideoListViewCell.xib */; settings = {ASSET_TAGS = (); }; };
@@ -46,9 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E406EEF81BD4F79600A26B27 /* 我能給的.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = "我能給的.m4v"; path = "../我能給的.m4v"; sourceTree = "<group>"; };
-		E45263591BCFF4BC00728A8C /* Movie.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = Movie.m4v; path = ../images/Movie.m4v; sourceTree = "<group>"; };
-		E452635C1BD0062600728A8C /* like.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = like.m4v; sourceTree = "<group>"; };
+		E406EEFC1BD524BA00A26B27 /* downloadIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downloadIcon.png; sourceTree = "<group>"; };
+		E406EEFD1BD524BA00A26B27 /* musicVideoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicVideoIcon.png; sourceTree = "<group>"; };
+		E406EEFF1BD524BA00A26B27 /* like.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = like.m4v; sourceTree = "<group>"; };
+		E406EF001BD524BA00A26B27 /* Movie.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Movie.m4v; sourceTree = "<group>"; };
+		E406EF011BD524BA00A26B27 /* 我能給的.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = "我能給的.m4v"; sourceTree = "<group>"; };
 		E4B761C51BCF8B0400335077 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E4B7B6FC1BD107FB00C417DA /* DownloadMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadMusicViewController.h; sourceTree = "<group>"; };
 		E4B7B6FD1BD107FB00C417DA /* DownloadMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadMusicViewController.m; sourceTree = "<group>"; };
@@ -56,8 +58,6 @@
 		E4B7B7001BD107FB00C417DA /* VideoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListViewController.h; sourceTree = "<group>"; };
 		E4B7B7011BD107FB00C417DA /* VideoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListViewController.m; sourceTree = "<group>"; };
 		E4B7B7021BD107FB00C417DA /* VideoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListViewController.xib; sourceTree = "<group>"; };
-		E4B7B70D1BD2A12B00C417DA /* downloadIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = downloadIcon.png; path = ../downloadIcon.png; sourceTree = "<group>"; };
-		E4B7B70E1BD2A12B00C417DA /* musicVideoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = musicVideoIcon.png; path = ../musicVideoIcon.png; sourceTree = "<group>"; };
 		E4B7B7161BD348F100C417DA /* PlayVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoView.h; sourceTree = "<group>"; };
 		E4B7B7171BD348F100C417DA /* PlayVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoView.m; sourceTree = "<group>"; };
 		E4B7B7E01BD48A6000C417DA /* VideoListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListViewCell.h; sourceTree = "<group>"; };
@@ -104,6 +104,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E406EEFA1BD524BA00A26B27 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E406EEFB1BD524BA00A26B27 /* Images */,
+				E406EEFE1BD524BA00A26B27 /* Videos */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E406EEFB1BD524BA00A26B27 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E406EEFC1BD524BA00A26B27 /* downloadIcon.png */,
+				E406EEFD1BD524BA00A26B27 /* musicVideoIcon.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		E406EEFE1BD524BA00A26B27 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				E406EEFF1BD524BA00A26B27 /* like.m4v */,
+				E406EF001BD524BA00A26B27 /* Movie.m4v */,
+				E406EF011BD524BA00A26B27 /* 我能給的.m4v */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
 		E4B761C41BCF867C00335077 /* framwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,12 +222,8 @@
 		E4D5B4951BCF4B7400F2C509 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E406EEF81BD4F79600A26B27 /* 我能給的.m4v */,
-				E4B7B70D1BD2A12B00C417DA /* downloadIcon.png */,
-				E4B7B70E1BD2A12B00C417DA /* musicVideoIcon.png */,
+				E406EEFA1BD524BA00A26B27 /* Resources */,
 				E4D5B4A61BCF4B7400F2C509 /* Info.plist */,
-				E452635C1BD0062600728A8C /* like.m4v */,
-				E45263591BCFF4BC00728A8C /* Movie.m4v */,
 				E4D5B4961BCF4B7400F2C509 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -327,16 +351,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E406EEF91BD4F79600A26B27 /* 我能給的.m4v in Resources */,
+				E406EF051BD524BA00A26B27 /* Movie.m4v in Resources */,
 				E4B7B7E41BD48A6000C417DA /* VideoListViewCell.xib in Resources */,
-				E4B7B70F1BD2A12B00C417DA /* downloadIcon.png in Resources */,
-				E4B7B7101BD2A12B00C417DA /* musicVideoIcon.png in Resources */,
+				E406EF031BD524BA00A26B27 /* musicVideoIcon.png in Resources */,
+				E406EF041BD524BA00A26B27 /* like.m4v in Resources */,
 				E4B7B7081BD107FB00C417DA /* DownloadMusicViewController.xib in Resources */,
-				E452635A1BCFF4BC00728A8C /* Movie.m4v in Resources */,
+				E406EF021BD524BA00A26B27 /* downloadIcon.png in Resources */,
 				E4B7B70A1BD107FB00C417DA /* VideoListViewController.xib in Resources */,
-				E452635D1BD0081600728A8C /* like.m4v in Resources */,
 				E4D5B4A51BCF4B7400F2C509 /* LaunchScreen.storyboard in Resources */,
 				E4D5B4A21BCF4B7400F2C509 /* Assets.xcassets in Resources */,
+				E406EF061BD524BA00A26B27 /* 我能給的.m4v in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
