@@ -20,8 +20,9 @@
 @property (nonatomic, weak) IBOutlet UILabel *currentlyTimeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *totalTimeLabel;
 @property (nonatomic, weak) IBOutlet UIView *controlButtonView;
-@property (nonatomic, weak) IBOutlet UISlider *currentVideoSlider;
+@property (nonatomic, weak) IBOutlet UISlider *videoSlider;
 
+@property (strong, nonatomic) AVPlayerItem *playerItem;
 @property (strong, nonatomic) NSArray *videos;
 @property (assign, nonatomic) BOOL isPlayingVideos;
 @property (assign, nonatomic) int playIndex;
@@ -33,30 +34,24 @@
 #pragma mark - IBAction
 
 - (IBAction)currentVideoSliderAction:(id)sender {
-    CMTime newTime = CMTimeMakeWithSeconds(self.currentVideoSlider.value, self.currentVideoSlider.maximumValue);
+    // 根據videoSlider的變化，讓影片指定的時間播放。
+    CMTime newTime = CMTimeMakeWithSeconds(self.videoSlider.value, self.videoSlider.maximumValue);
     [self.playVideoView.player seekToTime:newTime];
 }
 
 - (IBAction)videoRateButtonAction:(id)sender {
+    // 設定影片播放速率
     self.playVideoView.player.rate = 2.0;
 }
 
 - (IBAction)playMusicButtonAction:(id)sender {
-    if (self.isPlayingVideos) {
-        [self.playVideoButton setTitle:@"play" forState:UIControlStateNormal];
-        [self.playVideoView.player pause];
-    }
-    else {
-        [self.playVideoButton setTitle:@"pause" forState:UIControlStateNormal];
-        [self.playVideoView.player play];
-    }
-    self.isPlayingVideos = !self.isPlayingVideos;
+    // 播放功能
+    [self playVideo];
 }
 
 - (IBAction)fullScreenButtonAction:(id)sender {
     self.tabBarController.tabBar.hidden = !self.tabBarController.tabBar.hidden;
-
-    //強制旋轉螢幕
+    // 強制旋轉螢幕
     NSNumber *value;
     if ([UIDevice currentDevice].orientation != UIDeviceOrientationPortrait) {
         value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
@@ -82,8 +77,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.playIndex = (int)indexPath.row;
+    [self removeAllObserver];
     [self playVideoConfigure];
-
+    self.isPlayingVideos = NO;
+    [self playVideo];
 }
 
 #pragma mark - TableView DataSource
@@ -95,7 +92,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"VideoListViewCell";
     VideoListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    cell.videoImageView.image = [self movieImage:self.videos[self.playIndex]];
+    cell.videoImageView.image = [self movieImage:self.videos[indexPath.row]];
     return cell;
 }
 
@@ -104,36 +101,32 @@
 #pragma mark * init
 
 - (void)playVideoConfigure {
+    // 取得檔案路徑
     NSString *path = [[NSBundle mainBundle] pathForResource:self.videos[self.playIndex] ofType:@"m4v"];
     NSURL *fileURL = [NSURL fileURLWithPath:path];
-    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:fileURL];
-    self.playVideoView.player = [[AVPlayer alloc] initWithPlayerItem:playerItem];
+    // 設定播放項目
+    self.playerItem = [AVPlayerItem playerItemWithURL:fileURL];
+    self.playVideoView.player = [[AVPlayer alloc] initWithPlayerItem:self.playerItem];
     self.playVideoView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    //顯示總時間
-    int totalSeconds = CMTimeGetSeconds(self.playVideoView.player.currentItem.asset.duration);
-    self.totalTimeLabel.text = [self formatTime:totalSeconds];
-    //設定currentVideoSlider 的長度
-    self.currentVideoSlider.maximumValue = totalSeconds;
-    __weak typeof(self) weakSelf = self;
-    [self.playVideoView.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2) queue:dispatch_get_main_queue() usingBlock: ^(CMTime time) {
-         int currentTime = CMTimeGetSeconds(weakSelf.playVideoView.player.currentTime);
-         [weakSelf.currentVideoSlider setValue:currentTime];
-         weakSelf.currentlyTimeLabel.text = [weakSelf formatTime:currentTime];
-     }];
-    [self.playVideoView.player play];
+    // 使用 KVO 監聽 playerItem 狀態
+    [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    // 使用 NSNotificationCenter 監聽 playerItem：如果播放完就直接下一首
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(voideDidFinishPlayed:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playerItem];
 }
 
 - (void)navigationBarConfigure {
-    // 完全透明的navigationBar
+    // 透明 navigationBar
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    // 取消navigationBar下邊的線
+    // 取消 navigationBar 下邊的線
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    // 設定navigationBar 右鍵配置
+    // 設定 navigationBar 右鍵配置
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(nextVideoButtonAction:)];
-    // 設定navigationBar 右鍵配置
+    // 設定 navigationBar 右鍵配置
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(periousVideoButtonAction:)];
 }
-- (void)valueConfigure{
+
+- (void)valueConfigure {
+    // 初始設定
     self.videos = @[@"like", @"Movie", @"我能給的"];
     self.playIndex = 0;
 }
@@ -148,40 +141,118 @@
 }
 
 - (UIImage *)movieImage:(NSString *)fileName {
-    // 取得影片畫面
+    // 取得影片檔案位置
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"m4v"];
     NSURL *fileURL = [NSURL fileURLWithPath:path];
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:fileURL options:nil];
     AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-    // 選擇要擷取圖片的時間範圍
-    CMTime time = CMTimeMake(10, 10);
+    // 選擇要擷取圖片的時間範圍，參數 2 為截取影片 2 秒處的畫面，10 為每秒 10禎
+    CMTime time = CMTimeMakeWithSeconds(2, 10);
     CGImageRef imgRef = [imageGenerator copyCGImageAtTime:time actualTime:nil error:nil];
     return [[UIImage alloc] initWithCGImage:imgRef];
 }
 
+- (void)deviceDidRotate:(NSNotification *)notification {
+    [self controlsHideAndShow];
+}
+
+- (void)controlsHideAndShow {
+    [UIView animateWithDuration:0.4
+                     animations: ^{
+         self.controlButtonView.hidden = YES;
+         self.playVideoButton.hidden = YES;
+         self.navigationController.navigationBar.hidden = YES;
+     }];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (self.playerItem == object && [keyPath isEqualToString:@"status"]) {
+        if (self.playerItem.status == AVPlayerStatusReadyToPlay) {
+            // 顯示總時間
+            int totalSeconds = CMTimeGetSeconds(self.playVideoView.player.currentItem.asset.duration);
+            self.totalTimeLabel.text = [self formatTime:totalSeconds];
+            // 設定 currentVideoSlider 的長度
+            self.videoSlider.maximumValue = totalSeconds;
+            // 解除 retain cycle
+            __weak typeof(self) weakSelf = self;
+            // 给播放器增加進度更新
+            [self.playVideoView.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2) queue:dispatch_get_main_queue() usingBlock: ^(CMTime time) {
+                 int currentTime = CMTimeGetSeconds(weakSelf.playVideoView.player.currentTime);
+                 weakSelf.videoSlider.value = currentTime;
+                 weakSelf.currentlyTimeLabel.text = [weakSelf formatTime:currentTime];
+             }];
+
+        }
+        else if (self.playerItem.status == AVPlayerStatusFailed) {
+            NSLog(@"檔案錯誤");
+        }
+    }
+}
+
+- (void)removeAllObserver {
+    [self.playerItem removeObserver:self forKeyPath:@"status"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:self.playerItem];
+}
+
 #pragma mark * play feature
+
+- (void)voideDidFinishPlayed:(id)sender {
+    //播放完畢之後繼續播下一首
+    [self nextVideo];
+}
+
+- (void)playVideo {
+    // 播放功能
+    if (self.isPlayingVideos) {
+        [self.playVideoButton setTitle:@"play" forState:UIControlStateNormal];
+        [self.playVideoView.player pause];
+    }
+    else {
+        [self.playVideoButton setTitle:@"pause" forState:UIControlStateNormal];
+        [self.playVideoView.player play];
+    }
+    self.isPlayingVideos = !self.isPlayingVideos;
+}
 
 - (void)nextVideoButtonAction:(id)sender {
     // 下一首
-    self.playIndex++;
-    [self playVideoConfigure];
+    [self nextVideo];
 }
 
 - (void)periousVideoButtonAction:(id)sender {
     // 上一首
-    self.playIndex--;
+    [self periousVideo];
+}
+
+- (void)nextVideo {
+    self.playIndex++;
+    if (self.playIndex >= self.videos.count) {
+        self.playIndex = 0;
+    }
+    [self removeAllObserver];
     [self playVideoConfigure];
+    self.isPlayingVideos = NO;
+    [self playVideo];
+}
+
+- (void)periousVideo {
+    self.playIndex--;
+    if (self.playIndex < 0) {
+        self.playIndex = (int)self.videos.count - 1;
+    }
+    [self removeAllObserver];
+    [self playVideoConfigure];
+    self.isPlayingVideos = NO;
+    [self playVideo];
 }
 
 #pragma mark - life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // tableView: cellForRowAtIndexPath:方法中有兩個得重用cell的方法
+    // tableView cellForRowAtIndexPath 方法中有兩個得重用 cell 的方法
     [self.videoInfoTableView registerClass:[VideoListViewCell class] forCellReuseIdentifier:@"VideoListViewCell"];
     [self navigationBarConfigure];
     [self valueConfigure];
-    [self playVideoConfigure];
 }
-
 @end
