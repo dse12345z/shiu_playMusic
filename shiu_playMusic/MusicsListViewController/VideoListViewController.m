@@ -24,6 +24,7 @@
 
 @property (strong, nonatomic) NSArray *videos;
 @property (assign, nonatomic) BOOL isPlayingVideos;
+@property (assign, nonatomic) BOOL isSliderMoving;
 @property (assign, nonatomic) int playIndex;
 
 @end
@@ -31,12 +32,6 @@
 @implementation VideoListViewController
 
 #pragma mark - IBAction
-
-- (IBAction)currentVideoSliderAction:(id)sender {
-    // 根據videoSlider的變化，讓影片指定的時間播放。
-    CMTime newTime = CMTimeMakeWithSeconds(self.videoSlider.value, self.videoSlider.maximumValue);
-    [self.playVideoView.player seekToTime:newTime];
-}
 
 - (IBAction)videoRateButtonAction:(id)sender {
     // 設定影片播放速率
@@ -59,6 +54,17 @@
         value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
     }
     [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+}
+
+#pragma mark * Slider
+
+- (IBAction)videoSliderTouchDown:(id)sender {
+    self.isSliderMoving = YES;
+}
+- (IBAction)videoSliderUpInside:(id)sender {
+    self.isSliderMoving = NO;
+    CMTime newTime = CMTimeMakeWithSeconds(self.videoSlider.value, self.videoSlider.maximumValue);
+    [self.playVideoView.player seekToTime:newTime];
 }
 
 #pragma mark * GestureAction
@@ -111,7 +117,7 @@
     // 使用 KVO 監聽 playerItem 狀態
     [self.playVideoView.player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     // 使用 NSNotificationCenter 監聽 playerItem：如果播放完就直接下一首
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(voideDidFinishPlayed:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playVideoView.player.currentItem];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDidFinishPlayed:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playVideoView.player.currentItem];
 }
 
 - (void)navigationBarConfigure {
@@ -166,9 +172,12 @@
             __weak typeof(self) weakSelf = self;
             // 给播放器增加進度更新
             [self.playVideoView.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2) queue:dispatch_get_main_queue() usingBlock: ^(CMTime time) {
-                 int currentTime = CMTimeGetSeconds(weakSelf.playVideoView.player.currentTime);
-                 weakSelf.videoSlider.value = currentTime;
-                 weakSelf.currentlyTimeLabel.text = [weakSelf formatTime:currentTime];
+                 if (!weakSelf.isSliderMoving) {
+                     int currentTime = CMTimeGetSeconds(weakSelf.playVideoView.player.currentTime);
+                     weakSelf.videoSlider.value = currentTime;
+                     weakSelf.currentlyTimeLabel.text = [weakSelf formatTime:currentTime];
+                 }
+
              }];
 
         }
@@ -188,7 +197,7 @@
 
 #pragma mark * play feature
 
-- (void)voideDidFinishPlayed:(id)sender {
+- (void)videoDidFinishPlayed:(id)sender {
     //播放完畢之後繼續播下一首
     [self nextVideo];
 }

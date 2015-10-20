@@ -120,7 +120,8 @@
                                         </mask>
                                     </variation>
                                     <connections>
-                                        <action selector="currentVideoSliderAction:" destination="-1" eventType="valueChanged" id="t0M-NT-gd3"/>
+                                        <action selector="videoSliderTouchDown:" destination="-1" eventType="touchDown" id="RU1-wL-m1k"/>
+                                        <action selector="videoSliderUpInside:" destination="-1" eventType="touchUpInside" id="TQI-LV-pAM"/>
                                     </connections>
                                 </slider>
                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGc-Gs-XsZ">
