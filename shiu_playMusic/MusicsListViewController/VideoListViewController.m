@@ -22,7 +22,6 @@
 @property (nonatomic, weak) IBOutlet UIView *controlButtonView;
 @property (nonatomic, weak) IBOutlet UISlider *videoSlider;
 
-@property (strong, nonatomic) AVPlayerItem *playerItem;
 @property (strong, nonatomic) NSArray *videos;
 @property (assign, nonatomic) BOOL isPlayingVideos;
 @property (assign, nonatomic) int playIndex;
@@ -71,6 +70,7 @@
 }
 
 #pragma mark - TableView Delegate
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 70;
 }
@@ -78,7 +78,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.playIndex = (int)indexPath.row;
     [self removeAllObserver];
-    [self playVideoConfigure];
+    [self playVideoConfigure:self.videos[self.playIndex]];
     self.isPlayingVideos = NO;
     [self playVideo];
 }
@@ -100,18 +100,18 @@
 
 #pragma mark * init
 
-- (void)playVideoConfigure {
+- (void)playVideoConfigure:(NSString *)fileName {
     // 取得檔案路徑
-    NSString *path = [[NSBundle mainBundle] pathForResource:self.videos[self.playIndex] ofType:@"m4v"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"m4v"];
     NSURL *fileURL = [NSURL fileURLWithPath:path];
     // 設定播放項目
-    self.playerItem = [AVPlayerItem playerItemWithURL:fileURL];
-    self.playVideoView.player = [[AVPlayer alloc] initWithPlayerItem:self.playerItem];
+    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:fileURL];
+    self.playVideoView.player = [[AVPlayer alloc] initWithPlayerItem:playerItem];
     self.playVideoView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     // 使用 KVO 監聽 playerItem 狀態
-    [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    [self.playVideoView.player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     // 使用 NSNotificationCenter 監聽 playerItem：如果播放完就直接下一首
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(voideDidFinishPlayed:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playerItem];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(voideDidFinishPlayed:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playVideoView.player.currentItem];
 }
 
 - (void)navigationBarConfigure {
@@ -152,22 +152,11 @@
     return [[UIImage alloc] initWithCGImage:imgRef];
 }
 
-- (void)deviceDidRotate:(NSNotification *)notification {
-    [self controlsHideAndShow];
-}
-
-- (void)controlsHideAndShow {
-    [UIView animateWithDuration:0.4
-                     animations: ^{
-         self.controlButtonView.hidden = YES;
-         self.playVideoButton.hidden = YES;
-         self.navigationController.navigationBar.hidden = YES;
-     }];
-}
+#pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (self.playerItem == object && [keyPath isEqualToString:@"status"]) {
-        if (self.playerItem.status == AVPlayerStatusReadyToPlay) {
+    if (self.playVideoView.player == object && [keyPath isEqualToString:@"status"]) {
+        if (self.playVideoView.player.status == AVPlayerStatusReadyToPlay) {
             // 顯示總時間
             int totalSeconds = CMTimeGetSeconds(self.playVideoView.player.currentItem.asset.duration);
             self.totalTimeLabel.text = [self formatTime:totalSeconds];
@@ -183,15 +172,18 @@
              }];
 
         }
-        else if (self.playerItem.status == AVPlayerStatusFailed) {
+        else if (self.playVideoView.player.status == AVPlayerStatusFailed) {
             NSLog(@"檔案錯誤");
+        }
+        else if (self.playVideoView.player.status == AVPlayerStatusUnknown) {
+
         }
     }
 }
 
 - (void)removeAllObserver {
-    [self.playerItem removeObserver:self forKeyPath:@"status"];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:self.playerItem];
+    [self.playVideoView.player removeObserver:self forKeyPath:@"status"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self.playVideoView.player.currentItem];
 }
 
 #pragma mark * play feature
@@ -230,7 +222,7 @@
         self.playIndex = 0;
     }
     [self removeAllObserver];
-    [self playVideoConfigure];
+    [self playVideoConfigure:self.videos[self.playIndex]];
     self.isPlayingVideos = NO;
     [self playVideo];
 }
@@ -241,7 +233,7 @@
         self.playIndex = (int)self.videos.count - 1;
     }
     [self removeAllObserver];
-    [self playVideoConfigure];
+    [self playVideoConfigure:self.videos[self.playIndex]];
     self.isPlayingVideos = NO;
     [self playVideo];
 }

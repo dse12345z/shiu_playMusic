@@ -11,7 +11,7 @@
 
 @interface PlayVideoView : UIView
 
-@property(nonatomic)AVPlayer * player;
+@property(nonatomic,strong)AVPlayer * player;
 @property(nonatomic,readonly)AVPlayerLayer * playerLayer;
 
 @end
