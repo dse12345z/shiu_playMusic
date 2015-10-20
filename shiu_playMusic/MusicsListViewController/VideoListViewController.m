@@ -40,6 +40,7 @@
 
 - (IBAction)playMusicButtonAction:(id)sender {
     // 播放功能
+    self.isPlayingVideos = !self.isPlayingVideos;
     [self playVideo];
 }
 
@@ -83,9 +84,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.playIndex = (int)indexPath.row;
-    [self removeAllObserver];
     [self playVideoConfigure:self.videos[self.playIndex]];
-    self.isPlayingVideos = NO;
     [self playVideo];
 }
 
@@ -107,6 +106,7 @@
 #pragma mark * init
 
 - (void)playVideoConfigure:(NSString *)fileName {
+    [self removeAllObserver];
     // 取得檔案路徑
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"m4v"];
     NSURL *fileURL = [NSURL fileURLWithPath:path];
@@ -114,10 +114,7 @@
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:fileURL];
     self.playVideoView.player = [[AVPlayer alloc] initWithPlayerItem:playerItem];
     self.playVideoView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    // 使用 KVO 監聽 playerItem 狀態
-    [self.playVideoView.player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-    // 使用 NSNotificationCenter 監聽 playerItem：如果播放完就直接下一首
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDidFinishPlayed:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playVideoView.player.currentItem];
+    [self addObservers];
 }
 
 - (void)navigationBarConfigure {
@@ -177,17 +174,22 @@
                      weakSelf.videoSlider.value = currentTime;
                      weakSelf.currentlyTimeLabel.text = [weakSelf formatTime:currentTime];
                  }
-
              }];
-
         }
         else if (self.playVideoView.player.status == AVPlayerStatusFailed) {
             NSLog(@"檔案錯誤");
         }
         else if (self.playVideoView.player.status == AVPlayerStatusUnknown) {
-
+            NSLog(@"沒有任何檔案數據");
         }
     }
+}
+
+- (void)addObservers {
+    // 使用 KVO 監聽 playerItem 狀態
+    [self.playVideoView.player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    // 使用 NSNotificationCenter 監聽 playerItem：如果播放完就直接下一首
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDidFinishPlayed:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playVideoView.player.currentItem];
 }
 
 - (void)removeAllObserver {
@@ -212,7 +214,6 @@
         [self.playVideoButton setTitle:@"pause" forState:UIControlStateNormal];
         [self.playVideoView.player play];
     }
-    self.isPlayingVideos = !self.isPlayingVideos;
 }
 
 - (void)nextVideoButtonAction:(id)sender {
@@ -230,9 +231,7 @@
     if (self.playIndex >= self.videos.count) {
         self.playIndex = 0;
     }
-    [self removeAllObserver];
     [self playVideoConfigure:self.videos[self.playIndex]];
-    self.isPlayingVideos = NO;
     [self playVideo];
 }
 
@@ -241,9 +240,7 @@
     if (self.playIndex < 0) {
         self.playIndex = (int)self.videos.count - 1;
     }
-    [self removeAllObserver];
     [self playVideoConfigure:self.videos[self.playIndex]];
-    self.isPlayingVideos = NO;
     [self playVideo];
 }
 
