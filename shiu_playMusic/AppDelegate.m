@@ -17,7 +17,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
     UINavigationController *musicsListNavigationController = [[UINavigationController alloc] initWithRootViewController:[VideoListViewController new]];
     UITabBarItem *musicsListBarItem = [[UITabBarItem alloc] initWithTitle:@"Audio" image:[UIImage imageNamed:@"musicVideoIcon.png"] selectedImage:[UIImage imageNamed:@"musicVideoIcon.png"]];
