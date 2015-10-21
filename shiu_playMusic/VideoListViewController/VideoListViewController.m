@@ -9,7 +9,6 @@
 #import "VideoListViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
-
 @interface VideoListViewController ()
 
 @property (nonatomic, weak) IBOutlet PlayVideoView *playVideoView;
@@ -22,6 +21,7 @@
 @property (nonatomic, weak) IBOutlet UIView *controlButtonView;
 @property (nonatomic, weak) IBOutlet UISlider *videoSlider;
 
+@property (strong, nonatomic) NSMutableDictionary *cacheImages;
 @property (strong, nonatomic) NSArray *videos;
 @property (assign, nonatomic) BOOL isPlayingVideos;
 @property (assign, nonatomic) BOOL isSliderMoving;
@@ -46,7 +46,7 @@
 
 - (IBAction)fullScreenButtonAction:(id)sender {
     self.tabBarController.tabBar.hidden = !self.tabBarController.tabBar.hidden;
-    // 強制旋轉螢幕
+    // 強制旋轉螢幕之後要改
     NSNumber *value;
     if ([UIDevice currentDevice].orientation != UIDeviceOrientationPortrait) {
         value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
@@ -91,13 +91,31 @@
 #pragma mark - TableView DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.videos.count;
+    return 90;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"VideoListViewCell";
     VideoListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    cell.videoImageView.image = [self movieImage:self.videos[indexPath.row]];
+    NSString *imageKey = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+    // 檢查是否有資料
+    if (self.cacheImages[imageKey]) {
+        cell.videoImageView.image = self.cacheImages[imageKey];
+    }
+    else {
+        cell.videoImageView.image = nil;
+        __weak typeof(self) weakSelf = self;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            // 把花時間的工作先在這裡做
+            UIImage *image = [weakSelf movieImage:weakSelf.videos[indexPath.row]];
+            weakSelf.cacheImages[imageKey] = image;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 回主線程 刷新UI
+                VideoListViewCell *refreshCell = [tableView cellForRowAtIndexPath:indexPath];
+                refreshCell.videoImageView.image = weakSelf.cacheImages[imageKey];
+            });
+        });
+    }
     return cell;
 }
 
@@ -130,8 +148,9 @@
 
 - (void)valueConfigure {
     // 初始設定
-    self.videos = @[@"like", @"Movie", @"我能給的"];
+    self.videos = @[@"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的", @"like", @"Movie", @"我能給的"];
     self.playIndex = 0;
+    self.cacheImages = [NSMutableDictionary new];
 }
 
 #pragma mark * misc
