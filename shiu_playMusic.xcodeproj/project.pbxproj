@@ -15,17 +15,17 @@
 		E4B761C61BCF8B0400335077 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B761C51BCF8B0400335077 /* AVFoundation.framework */; };
 		E4B7B7071BD107FB00C417DA /* DownloadMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B7B6FD1BD107FB00C417DA /* DownloadMusicViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E4B7B7081BD107FB00C417DA /* DownloadMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B6FE1BD107FB00C417DA /* DownloadMusicViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		E4B7B7091BD107FB00C417DA /* VideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B7B7011BD107FB00C417DA /* VideoListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		E4B7B70A1BD107FB00C417DA /* VideoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B7021BD107FB00C417DA /* VideoListViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		E4B7B7181BD348F100C417DA /* PlayVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B7B7171BD348F100C417DA /* PlayVideoView.m */; settings = {ASSET_TAGS = (); }; };
-		E4B7B7E31BD48A6000C417DA /* VideoListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B7B7E11BD48A6000C417DA /* VideoListViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		E4B7B7E41BD48A6000C417DA /* VideoListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B7B7E21BD48A6000C417DA /* VideoListViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		E4D5B4971BCF4B7400F2C509 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5B4961BCF4B7400F2C509 /* main.m */; };
 		E4D5B49A1BCF4B7400F2C509 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5B4991BCF4B7400F2C509 /* AppDelegate.m */; };
 		E4D5B4A21BCF4B7400F2C509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4D5B4A11BCF4B7400F2C509 /* Assets.xcassets */; };
 		E4D5B4A51BCF4B7400F2C509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D5B4A31BCF4B7400F2C509 /* LaunchScreen.storyboard */; };
 		E4D5B4B01BCF4B7400F2C509 /* shiu_playMusicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5B4AF1BCF4B7400F2C509 /* shiu_playMusicTests.m */; };
 		E4D5B4BB1BCF4B7400F2C509 /* shiu_playMusicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D5B4BA1BCF4B7400F2C509 /* shiu_playMusicUITests.m */; };
+		E4DF93DC1BD737E1008ACE94 /* PlayVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DF93D41BD737E1008ACE94 /* PlayVideoView.m */; settings = {ASSET_TAGS = (); }; };
+		E4DF93DD1BD737E1008ACE94 /* videoListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DF93D71BD737E1008ACE94 /* videoListViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E4DF93DE1BD737E1008ACE94 /* VideoListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4DF93D81BD737E1008ACE94 /* VideoListViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		E4DF93DF1BD737E1008ACE94 /* VideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DF93DA1BD737E1008ACE94 /* VideoListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E4DF93E01BD737E1008ACE94 /* VideoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4DF93DB1BD737E1008ACE94 /* VideoListViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,14 +55,6 @@
 		E4B7B6FC1BD107FB00C417DA /* DownloadMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadMusicViewController.h; sourceTree = "<group>"; };
 		E4B7B6FD1BD107FB00C417DA /* DownloadMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadMusicViewController.m; sourceTree = "<group>"; };
 		E4B7B6FE1BD107FB00C417DA /* DownloadMusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadMusicViewController.xib; sourceTree = "<group>"; };
-		E4B7B7001BD107FB00C417DA /* VideoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListViewController.h; sourceTree = "<group>"; };
-		E4B7B7011BD107FB00C417DA /* VideoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListViewController.m; sourceTree = "<group>"; };
-		E4B7B7021BD107FB00C417DA /* VideoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListViewController.xib; sourceTree = "<group>"; };
-		E4B7B7161BD348F100C417DA /* PlayVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoView.h; sourceTree = "<group>"; };
-		E4B7B7171BD348F100C417DA /* PlayVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoView.m; sourceTree = "<group>"; };
-		E4B7B7E01BD48A6000C417DA /* VideoListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListViewCell.h; sourceTree = "<group>"; };
-		E4B7B7E11BD48A6000C417DA /* VideoListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListViewCell.m; sourceTree = "<group>"; };
-		E4B7B7E21BD48A6000C417DA /* VideoListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListViewCell.xib; sourceTree = "<group>"; };
 		E4D5B4921BCF4B7400F2C509 /* shiu_playMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shiu_playMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D5B4961BCF4B7400F2C509 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4D5B4981BCF4B7400F2C509 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,6 +68,14 @@
 		E4D5B4B61BCF4B7400F2C509 /* shiu_playMusicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shiu_playMusicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D5B4BA1BCF4B7400F2C509 /* shiu_playMusicUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shiu_playMusicUITests.m; sourceTree = "<group>"; };
 		E4D5B4BC1BCF4B7400F2C509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4DF93D31BD737E1008ACE94 /* PlayVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoView.h; sourceTree = "<group>"; };
+		E4DF93D41BD737E1008ACE94 /* PlayVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoView.m; sourceTree = "<group>"; };
+		E4DF93D61BD737E1008ACE94 /* videoListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = videoListViewCell.h; sourceTree = "<group>"; };
+		E4DF93D71BD737E1008ACE94 /* videoListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = videoListViewCell.m; sourceTree = "<group>"; };
+		E4DF93D81BD737E1008ACE94 /* VideoListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListViewCell.xib; sourceTree = "<group>"; };
+		E4DF93D91BD737E1008ACE94 /* VideoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListViewController.h; sourceTree = "<group>"; };
+		E4DF93DA1BD737E1008ACE94 /* VideoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListViewController.m; sourceTree = "<group>"; };
+		E4DF93DB1BD737E1008ACE94 /* VideoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,39 +151,6 @@
 			path = DownloadMusicViewController;
 			sourceTree = "<group>";
 		};
-		E4B7B6FF1BD107FB00C417DA /* VideoListViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E4B7B7151BD348F100C417DA /* PlayerView */,
-				E4B7B7001BD107FB00C417DA /* VideoListViewController.h */,
-				E4B7B7011BD107FB00C417DA /* VideoListViewController.m */,
-				E4B7B7021BD107FB00C417DA /* VideoListViewController.xib */,
-				E4B7B7031BD107FB00C417DA /* VideoListViewCell */,
-			);
-			name = VideoListViewController;
-			path = MusicsListViewController;
-			sourceTree = "<group>";
-		};
-		E4B7B7031BD107FB00C417DA /* VideoListViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				E4B7B7E01BD48A6000C417DA /* VideoListViewCell.h */,
-				E4B7B7E11BD48A6000C417DA /* VideoListViewCell.m */,
-				E4B7B7E21BD48A6000C417DA /* VideoListViewCell.xib */,
-			);
-			name = VideoListViewCell;
-			path = MusicsListViewControllerCell;
-			sourceTree = "<group>";
-		};
-		E4B7B7151BD348F100C417DA /* PlayerView */ = {
-			isa = PBXGroup;
-			children = (
-				E4B7B7161BD348F100C417DA /* PlayVideoView.h */,
-				E4B7B7171BD348F100C417DA /* PlayVideoView.m */,
-			);
-			path = PlayerView;
-			sourceTree = "<group>";
-		};
 		E4D5B4891BCF4B7400F2C509 = {
 			isa = PBXGroup;
 			children = (
@@ -210,7 +177,7 @@
 				E4D5B4981BCF4B7400F2C509 /* AppDelegate.h */,
 				E4D5B4991BCF4B7400F2C509 /* AppDelegate.m */,
 				E4B7B6FB1BD107FB00C417DA /* DownloadMusicViewController */,
-				E4B7B6FF1BD107FB00C417DA /* VideoListViewController */,
+				E4DF93D11BD737E1008ACE94 /* VideoListViewController */,
 				E4D5B4A11BCF4B7400F2C509 /* Assets.xcassets */,
 				E4D5B4A31BCF4B7400F2C509 /* LaunchScreen.storyboard */,
 				E4B761C41BCF867C00335077 /* framwork */,
@@ -245,6 +212,37 @@
 				E4D5B4BC1BCF4B7400F2C509 /* Info.plist */,
 			);
 			path = shiu_playMusicUITests;
+			sourceTree = "<group>";
+		};
+		E4DF93D11BD737E1008ACE94 /* VideoListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E4DF93D91BD737E1008ACE94 /* VideoListViewController.h */,
+				E4DF93DA1BD737E1008ACE94 /* VideoListViewController.m */,
+				E4DF93DB1BD737E1008ACE94 /* VideoListViewController.xib */,
+				E4DF93D21BD737E1008ACE94 /* PlayerView */,
+				E4DF93D51BD737E1008ACE94 /* VideoListViewCell */,
+			);
+			path = VideoListViewController;
+			sourceTree = "<group>";
+		};
+		E4DF93D21BD737E1008ACE94 /* PlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				E4DF93D31BD737E1008ACE94 /* PlayVideoView.h */,
+				E4DF93D41BD737E1008ACE94 /* PlayVideoView.m */,
+			);
+			path = PlayerView;
+			sourceTree = "<group>";
+		};
+		E4DF93D51BD737E1008ACE94 /* VideoListViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E4DF93D61BD737E1008ACE94 /* videoListViewCell.h */,
+				E4DF93D71BD737E1008ACE94 /* videoListViewCell.m */,
+				E4DF93D81BD737E1008ACE94 /* VideoListViewCell.xib */,
+			);
+			path = VideoListViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,12 +350,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E406EF051BD524BA00A26B27 /* Movie.m4v in Resources */,
-				E4B7B7E41BD48A6000C417DA /* VideoListViewCell.xib in Resources */,
+				E4DF93DE1BD737E1008ACE94 /* VideoListViewCell.xib in Resources */,
 				E406EF031BD524BA00A26B27 /* musicVideoIcon.png in Resources */,
 				E406EF041BD524BA00A26B27 /* like.m4v in Resources */,
 				E4B7B7081BD107FB00C417DA /* DownloadMusicViewController.xib in Resources */,
 				E406EF021BD524BA00A26B27 /* downloadIcon.png in Resources */,
-				E4B7B70A1BD107FB00C417DA /* VideoListViewController.xib in Resources */,
+				E4DF93E01BD737E1008ACE94 /* VideoListViewController.xib in Resources */,
 				E4D5B4A51BCF4B7400F2C509 /* LaunchScreen.storyboard in Resources */,
 				E4D5B4A21BCF4B7400F2C509 /* Assets.xcassets in Resources */,
 				E406EF061BD524BA00A26B27 /* 我能給的.m4v in Resources */,
@@ -385,11 +383,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4B7B7181BD348F100C417DA /* PlayVideoView.m in Sources */,
-				E4B7B7091BD107FB00C417DA /* VideoListViewController.m in Sources */,
-				E4B7B7E31BD48A6000C417DA /* VideoListViewCell.m in Sources */,
 				E4B7B7071BD107FB00C417DA /* DownloadMusicViewController.m in Sources */,
 				E4D5B49A1BCF4B7400F2C509 /* AppDelegate.m in Sources */,
+				E4DF93DD1BD737E1008ACE94 /* videoListViewCell.m in Sources */,
+				E4DF93DC1BD737E1008ACE94 /* PlayVideoView.m in Sources */,
+				E4DF93DF1BD737E1008ACE94 /* VideoListViewController.m in Sources */,
 				E4D5B4971BCF4B7400F2C509 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
