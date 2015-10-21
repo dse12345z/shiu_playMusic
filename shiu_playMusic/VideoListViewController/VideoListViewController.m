@@ -123,9 +123,9 @@
     // 取消 navigationBar 下邊的線
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     // 設定 navigationBar 右鍵配置
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(nextVideoButtonAction:)];
-    // 設定 navigationBar 右鍵配置
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(periousVideoButtonAction:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(nextVideoButtonAction)];
+    // 設定 navigationBar 左鍵配置
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(periousVideoButtonAction)];
 }
 
 - (void)valueConfigure {
@@ -189,7 +189,7 @@
     // 使用 KVO 監聽 playerItem 狀態
     [self.playVideoView.player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     // 使用 NSNotificationCenter 監聽 playerItem：如果播放完就直接下一首
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDidFinishPlayed:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playVideoView.player.currentItem];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nextVideoButtonAction) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playVideoView.player.currentItem];
 }
 
 - (void)removeAllObserver {
@@ -198,11 +198,6 @@
 }
 
 #pragma mark * play feature
-
-- (void)videoDidFinishPlayed:(id)sender {
-    //播放完畢之後繼續播下一首
-    [self nextVideo];
-}
 
 - (void)playVideo {
     // 播放功能
@@ -216,17 +211,7 @@
     }
 }
 
-- (void)nextVideoButtonAction:(id)sender {
-    // 下一首
-    [self nextVideo];
-}
-
-- (void)periousVideoButtonAction:(id)sender {
-    // 上一首
-    [self periousVideo];
-}
-
-- (void)nextVideo {
+- (void)nextVideoButtonAction {
     self.playIndex++;
     if (self.playIndex >= self.videos.count) {
         self.playIndex = 0;
@@ -235,7 +220,7 @@
     [self playVideo];
 }
 
-- (void)periousVideo {
+- (void)periousVideoButtonAction {
     self.playIndex--;
     if (self.playIndex < 0) {
         self.playIndex = (int)self.videos.count - 1;
