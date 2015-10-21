@@ -26,6 +26,7 @@
 		E4DF93DE1BD737E1008ACE94 /* VideoListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4DF93D81BD737E1008ACE94 /* VideoListViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		E4DF93DF1BD737E1008ACE94 /* VideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DF93DA1BD737E1008ACE94 /* VideoListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E4DF93E01BD737E1008ACE94 /* VideoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4DF93DB1BD737E1008ACE94 /* VideoListViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		EB44D00265AF1365A64EE61A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 725A81E73B5CA4D1BBE6EE38 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		725A81E73B5CA4D1BBE6EE38 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D1F4421B3B662A4A47F5CAB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9888F1D22324C2D30ADE9D16 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E406EEFC1BD524BA00A26B27 /* downloadIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downloadIcon.png; sourceTree = "<group>"; };
 		E406EEFD1BD524BA00A26B27 /* musicVideoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicVideoIcon.png; sourceTree = "<group>"; };
 		E406EEFF1BD524BA00A26B27 /* like.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = like.m4v; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B761C61BCF8B0400335077 /* AVFoundation.framework in Frameworks */,
+				EB44D00265AF1365A64EE61A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +109,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8DB12F6EC5CD55C15E72DEFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				725A81E73B5CA4D1BBE6EE38 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF04BE53F8D64F12FDA60813 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9888F1D22324C2D30ADE9D16 /* Pods.debug.xcconfig */,
+				7D1F4421B3B662A4A47F5CAB /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E406EEFA1BD524BA00A26B27 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +180,8 @@
 				E4D5B4AE1BCF4B7400F2C509 /* shiu_playMusicTests */,
 				E4D5B4B91BCF4B7400F2C509 /* shiu_playMusicUITests */,
 				E4D5B4931BCF4B7400F2C509 /* Products */,
+				BF04BE53F8D64F12FDA60813 /* Pods */,
+				8DB12F6EC5CD55C15E72DEFD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -252,9 +276,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4D5B4BF1BCF4B7400F2C509 /* Build configuration list for PBXNativeTarget "shiu_playMusic" */;
 			buildPhases = (
+				EFA915FFCD88E6DBB08F5868 /* Check Pods Manifest.lock */,
 				E4D5B48E1BCF4B7400F2C509 /* Sources */,
 				E4D5B48F1BCF4B7400F2C509 /* Frameworks */,
 				E4D5B4901BCF4B7400F2C509 /* Resources */,
+				6923A68D33F11D353FE40409 /* Embed Pods Frameworks */,
+				FDEE299E79236FFDFF2C0B2B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -377,6 +404,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6923A68D33F11D353FE40409 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFA915FFCD88E6DBB08F5868 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FDEE299E79236FFDFF2C0B2B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E4D5B48E1BCF4B7400F2C509 /* Sources */ = {
@@ -517,6 +592,7 @@
 		};
 		E4D5B4C01BCF4B7400F2C509 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9888F1D22324C2D30ADE9D16 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -532,6 +608,7 @@
 		};
 		E4D5B4C11BCF4B7400F2C509 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D1F4421B3B662A4A47F5CAB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
